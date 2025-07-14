@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghid de Elaborare a unui CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .page {
+            position: relative;
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #3b82f6;
+        }
+        @media print {
+            .page {
+                box-shadow: none;
+                margin: 0;
+                max-width: 100%;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen py-8">
+    <div class="container mx-auto px-4">
+        <!-- Control Panel -->
+        <div class="no-print mb-6 bg-white rounded-lg p-4 shadow-md">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <h2 class="text-xl font-bold text-gray-800">Opțiuni Document</h2>
+                <div class="flex gap-3">
+                    <button id="printBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                        </svg>
+                        Printează
+                    </button>
+                    <button id="downloadBtn" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Descarcă PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Document -->
+        <div class="page bg-white rounded-lg shadow-lg max-w-4xl mx-auto p-8 mb-10">
+            <!-- Header -->
+            <header class="mb-10 border-b border-gray-200 pb-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div>
+                        <h1 class="text-3xl font-bold text-blue-600">Ghid de Elaborare a unui CV</h1>
+                        <p class="text-gray-600 mt-2">Cum să creezi un CV profesionist care atrage atenția</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span id="currentDate" class="text-gray-600"></span>
+                        </div>
+                        <div class="flex items-center mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-gray-600">uceeview@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <section class="mb-8 bg-blue-50 p-5 rounded-lg border border-blue-100">
+                <h2 class="text-xl font-semibold text-blue-800 mb-4">Cuprins</h2>
+                <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                    <li><a href="#introducere" class="text-blue-600 hover:underline">Introducere</a></li>
+                    <li><a href="#structura" class="text-blue-600 hover:underline">Structura unui CV eficient</a></li>
+                    <li><a href="#tipuri" class="text-blue-600 hover:underline">Tipuri de CV-uri</a></li>
+                    <li><a href="#greseli" class="text-blue-600 hover:underline">Greșeli frecvente de evitat</a></li>
+                    <li><a href="#sfaturi" class="text-blue-600 hover:underline">Sfaturi pentru un CV de impact</a></li>
+                    <li><a href="#ats" class="text-blue-600 hover:underline">Optimizarea pentru sistemele ATS</a></li>
+                    <li><a href="#exemplu" class="text-blue-600 hover:underline">Exemplu de structură CV</a></li>
+                    <li><a href="#intrebari" class="text-blue-600 hover:underline">Întrebări frecvente</a></li>
+                </ol>
+            </section>
+
+            <!-- Introduction -->
+            <section id="introducere" class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 section-title mb-6">Introducere</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    Un Curriculum Vitae (CV) bine elaborat este esențial pentru succesul în căutarea unui loc de muncă. 
+                    Acest document reprezintă prima impresie pe care o faci potențialilor angajatori și poate determina 
+                    dacă vei fi invitat la un interviu sau nu. Acest ghid te va ajuta să creezi un CV profesionist, 
+                    bine structurat și adaptat nevoilor tale profesionale.
+                </p>
+                <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                <strong>De reținut:</strong> În medie, un recrutor petrece doar 6-7 secunde pentru a scana un CV la prima vedere. Acest ghid te va ajuta să creezi un CV care captează atenția rapid și eficient.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Content -->
+            <section id="structura" class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 section-title mb-6">Structura unui CV eficient</h2>
+                
+                <div class="mb-6">
+                    <h3 class="text-xl font-medium text-blue-600 mb-3">1. Informații personale</h3>
+                    <div class="pl-5 border-l-2 border-blue-200">
+                        <p class="text-gray-700 mb-2">Această secțiune trebuie să includă:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                            <li>Numele și prenumele complet</li>
+                            <li>Număr de telefon</li>
+                            <li>Adresa de email profesională</li>
+                            <li>Locația (oraș, județ)</li>
+                            <li>Link către profilul LinkedIn (opțional)</li>
+                            <li>Link către portofoliu sau site personal (dacă este relevant)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xl font-medium text-blue-600 mb-3">2. Rezumat profesional</h3>
+                    <div class="pl-5 border-l-2 border-blue-200">
+                        <p class="text-gray-700 mb-2">O scurtă prezentare (3-5 propoziții) care evidențiază:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                            <li>Experiența profesională relevantă</li>
+                            <li>Principalele competențe și realizări</li>
+                            <li>Obiectivele profesionale</li>
+                        </ul>
+                        <p class="text-gray-700 mt-2 italic">Exemplu: "Specialist în marketing digital cu peste 5 ani de experiență în gestionarea campaniilor PPC și SEO. Am contribuit la creșterea traficului organic cu 150% pentru clienți din diverse industrii. Pasionat de analiza datelor și optimizarea conversiilor."</p>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xl font-medium text-blue-600 mb-3">3. Experiență profesională</h3>
+                    <div class="pl-5 border-l-2 border-blue-200">
+                        <p class="text-gray-700 mb-2">Pentru fiecare poziție, include:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                            <li>Titlul funcției</li>
+                            <li>Numele companiei</li>
+                            <li>Perioada de angajare (luna/anul - luna/anul)</li>
+                            <li>3-5 responsabilități și realizări cheie, folosind verbe de acțiune</li>
+                            <li>Rezultate cuantificabile (procente, cifre, statistici)</li>
+                        </ul>
+                        <div class="bg-gray-50 p-3 rounded-md mt-3 border border-gray-200">
+                            <p class="text-gray-700 font-medium">Sfat profesional:</p>
+                            <p class="text-gray-600 text-sm">Organizează experiența în ordine cronologică inversă, începând cu cea mai recentă poziție.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xl font-medium text-blue-600 mb-3">4. Educație și formare</h3>
+                    <div class="pl-5 border-l-2 border-blue-200">
+                        <p class="text-gray-700 mb-2">Include următoarele informații:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                            <li>Numele instituției</li>
+                            <li>Diploma/certificarea obținută</li>
+                            <li>Perioada de studiu</li>
+                            <li>Specializarea</li>
+                            <li>Realizări academice notabile (opțional)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xl font-medium text-blue-600 mb-3">5. Competențe</h3>
+                    <div class="pl-5 border-l-2 border-blue-200">
+                        <p class="text-gray-700 mb-2">Împarte competențele în categorii relevante:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                            <li>Competențe tehnice (software, limbaje de programare, etc.)</li>
+                            <li>Competențe lingvistice (nivelul de cunoaștere pentru fiecare limbă)</li>
+                            <li>Abilități soft (comunicare, leadership, lucru în echipă)</li>
+                        </ul>
+                        <div class="bg-gray-50 p-3 rounded-md mt-3 border border-gray-200">
+                            <p class="text-gray-700 font-medium">Sfat profesional:</p>
+                            <p class="text-gray-600 text-sm">Adaptează lista de competențe în funcție de cerințele postului pentru care aplici.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xl font-medium text-blue-600 mb-3">6. Alte secțiuni opționale</h3>
+                    <div class="pl-5 border-l-2 border-blue-200">
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                            <li>Proiecte relevante</li>
+                            <li>Voluntariat</li>
+                            <li>Publicații</li>
+                            <li>Certificări</li>
+                            <li>Premii și distincții</li>
+                            <li>Hobby-uri și interese (dacă sunt relevante pentru poziție)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Types of CVs -->
+            <section id="tipuri" class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 section-title mb-6">Tipuri de CV-uri</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="text-lg font-medium text-blue-700 mb-3">CV Cronologic</h3>
+                        <p class="text-gray-700 mb-3">Prezintă experiența profesională în ordine cronologică inversă, începând cu cea mai recentă poziție.</p>
+                        <p class="font-medium text-gray-700">Potrivit pentru:</p>
+                        <ul class="list-disc list-inside text-gray-700 text-sm ml-2">
+                            <li>Candidați cu experiență solidă în domeniu</li>
+                            <li>Cariere cu progres constant</li>
+                            <li>Aplicații pentru poziții în industrii tradiționale</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="text-lg font-medium text-blue-700 mb-3">CV Funcțional</h3>
+                        <p class="text-gray-700 mb-3">Pune accentul pe competențe și realizări, mai puțin pe cronologia experienței.</p>
+                        <p class="font-medium text-gray-700">Potrivit pentru:</p>
+                        <ul class="list-disc list-inside text-gray-700 text-sm ml-2">
+                            <li>Persoane care schimbă domeniul de activitate</li>
+                            <li>Candidați cu perioade de inactivitate profesională</li>
+                            <li>Proaspeți absolvenți cu experiență limitată</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="text-lg font-medium text-blue-700 mb-3">CV Combinat</h3>
+                        <p class="text-gray-700 mb-3">Îmbină elementele CV-ului cronologic cu cel funcțional, evidențiind atât competențele, cât și experiența.</p>
+                        <p class="font-medium text-gray-700">Potrivit pentru:</p>
+                        <ul class="list-disc list-inside text-gray-700 text-sm ml-2">
+                            <li>Profesioniști cu experiență care doresc să evidențieze competențe specifice</li>
+                            <li>Candidați care aplică pentru poziții care necesită abilități specializate</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="text-lg font-medium text-blue-700 mb-3">CV Specific pentru industrie</h3>
+                        <p class="text-gray-700 mb-3">Adaptat cerințelor specifice ale unei industrii (academic, creativ, tehnic).</p>
+                        <p class="font-medium text-gray-700">Exemple:</p>
+                        <ul class="list-disc list-inside text-gray-700 text-sm ml-2">
+                            <li>CV Academic - include publicații, cercetări, conferințe</li>
+                            <li>CV Creativ - poate include portofoliu vizual, proiecte</li>
+                            <li>CV Tehnic - evidențiază competențe tehnice specifice, certificări</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Common Mistakes -->
+            <section id="greseli" class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 section-title mb-6">Greșeli frecvente de evitat</h2>
+                
+                <div class="overflow-hidden bg-white shadow-sm border border-gray-200 rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Greșeală</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">De ce este o problemă</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Soluție</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-600">CV prea lung</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">Recrutorii petrec puțin timp pe fiecare CV; informațiile importante pot fi pierdute.</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">Limitează CV-ul la 1-2 pagini, păstrând doar informațiile relevante pentru poziția vizată.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-600">Erori gramaticale</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">Sugerează lipsă de atenție la detalii și profesionalism.</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">Verifică de mai multe ori textul și cere unei alte persoane să îl revizuiască.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-600">Informații generice</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">Nu te diferențiază de alți candidați.</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">Personalizează CV-ul pentru fiecare poziție, evidențiind realizări specifice și cuantificabile.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-600">Design încărcat</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">Distrage atenția de la conținut și poate fi dificil de citit.</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">Folosește un design curat, cu spațiere adecvată și maximum 2 tipuri de font.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-600">Lipsă de cuvinte cheie</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">Poate fi respins de sistemele ATS înainte de a ajunge la un recrutor.</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">Include termeni relevanți din descrierea postului și industrie.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Tips Section -->
+            <section id="sfaturi" class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 section-title mb-6">Sfaturi pentru un CV de impact</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-100">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 rounded-full p-2 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-800 mb-1">Personalizează pentru fiecare aplicație</h4>
+                                <p class="text-gray-700 text-sm">Adaptează CV-ul pentru fiecare poziție, evidențiind experiența și competențele relevante pentru postul vizat.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-100">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 rounded-full p-2 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-800 mb-1">Folosește cuvinte cheie</h4>
+                                <p class="text-gray-700 text-sm">Include termeni relevanți din anunțul de angajare pentru a trece de sistemele ATS (Applicant Tracking System).</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-100">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 rounded-full p-2 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-800 mb-1">Cuantifică realizările</h4>
+                                <p class="text-gray-700 text-sm">Folosește cifre și procente pentru a demonstra impactul activității tale (ex: "Am crescut vânzările cu 25%").</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-100">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 rounded-full p-2 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-800 mb-1">Design clar și profesionist</h4>
+                                <p class="text-gray-700 text-sm">Utilizează un format consistent, spațiere adecvată și maximum 2 tipuri de font pentru lizibilitate.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-100">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 rounded-full p-2 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-800 mb-1">Verifică gramatica și ortografia</h4>
+                                <p class="text-gray-700 text-sm">Erorile gramaticale pot afecta negativ percepția recrutorilor asupra profesionalismului tău.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-100">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 rounded-full p-2 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-800 mb-1">Limitează la 1-2 pagini</h4>
+                                <p class="text-gray-700 text-sm">Un CV concis are mai multe șanse să fie citit integral de către recrutori.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ATS Optimization -->
+            <section id="ats" class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 section-title mb-6">Optimizarea pentru sistemele ATS</h2>
+                
+                <p class="text-gray-700 mb-4">
+                    Sistemele ATS (Applicant Tracking System) sunt programe utilizate de angajatori pentru a filtra CV-urile înainte ca acestea să ajungă la recrutorii umani. Iată cum să optimizezi CV-ul pentru a trece de aceste sisteme:
+                </p>
+                
+                <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-6">
+                    <h3 class="text-lg font-medium text-blue-700 mb-4">Strategii de optimizare ATS</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 text-green-500 mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Folosește formate standard</p>
+                                <p class="text-gray-700 text-sm">Utilizează formate comune precum .docx sau .pdf și evită elemente grafice complexe, tabele sau coloane multiple.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 text-green-500 mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Include cuvinte cheie relevante</p>
+                                <p class="text-gray-700 text-sm">Analizează descrierea postului și include termenii specifici menționați în cerințe și responsabilități.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 text-green-500 mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Utilizează titluri standard pentru secțiuni</p>
+                                <p class="text-gray-700 text-sm">Folosește denumiri clare precum "Experiență profesională", "Educație", "Competențe" pentru a facilita scanarea automată.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 text-green-500 mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Evită header-ele și footer-ele</p>
+                                <p class="text-gray-700 text-sm">Unele sisteme ATS nu pot citi informațiile din aceste zone.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 text-green-500 mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Folosește abrevieri și forme complete</p>
+                                <p class="text-gray-700 text-sm">Include atât abrevierea, cât și forma completă pentru termeni tehnici (ex: "SEO (Search Engine Optimization)").</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-5 rounded-lg border border-blue-100">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-blue-800">Știai că?</h4>
+                            <p class="text-sm text-gray-700 mt-1">
+                                Aproximativ 75% dintre CV-uri sunt respinse de sistemele ATS înainte de a fi văzute de un recrutor. Optimizarea CV-ului pentru aceste sisteme este esențială în procesul de aplicare.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Example Section -->
+            <section id="exemplu" class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 section-title mb-6">Exemplu de structură CV</h2>
+                
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <div class="bg-gray-50 p-4 border-b border-gray-200">
+                        <h3 class="font-medium text-gray-800">Model de CV - Specialist Marketing</h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="mb-4">
+                            <h4 class="font-bold text-lg text-blue-600">Ana Popescu</h4>
+                            <p class="text-gray-600">București, România</p>
+                            <p class="text-gray-600">0722 123 456 | ana.popescu@email.com | linkedin.com/in/anapopescu</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-800 border-b border-gray-200 pb-1 mb-2">Rezumat profesional</h5>
+                            <p class="text-gray-700 text-sm">Specialist în marketing digital cu peste 5 ani de experiență în gestionarea campaniilor PPC și SEO. Am contribuit la creșterea traficului organic cu 150% pentru clienți din diverse industrii. Pasionat de analiza datelor și optimizarea conversiilor.</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-800 border-b border-gray-200 pb-1 mb-2">Experiență profesională</h5>
+                            
+                            <div class="mb-3">
+                                <div class="flex justify-between items-start">
+                                    <p class="font-medium text-gray-800">Specialist Marketing Digital</p>
+                                    <p class="text-sm text-gray-600">Ian 2020 - Prezent</p>
+                                </div>
+                                <p class="text-gray-700 text-sm italic">Agenția de Marketing XYZ, București</p>
+                                <ul class="list-disc list-inside text-gray-700 text-sm mt-1 ml-2">
+                                    <li>Gestionarea campaniilor Google Ads cu un buget lunar de 15.000 EUR, obținând un ROI mediu de 300%</li>
+                                    <li>Implementarea strategiilor SEO care au dus la creșterea traficului organic cu 150% în 12 luni</li>
+                                    <li>Coordonarea unei echipe de 3 specialiști în content marketing</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <p class="font-medium text-gray-800">Asistent Marketing</p>
+                                    <p class="text-sm text-gray-600">Mar 2018 - Dec 2019</p>
+                                </div>
+                                <p class="text-gray-700 text-sm italic">Compania ABC, București</p>
+                                <ul class="list-disc list-inside text-gray-700 text-sm mt-1 ml-2">
+                                    <li>Crearea și gestionarea conținutului pentru social media, crescând engagement-ul cu 75%</li>
+                                    <li>Asistarea în organizarea a 5 evenimente de promovare cu peste 200 de participanți</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-800 border-b border-gray-200 pb-1 mb-2">Educație</h5>
+                            <div class="flex justify-between items-start">
+                                <p class="font-medium text-gray-800">Facultatea de Marketing</p>
+                                <p class="text-sm text-gray-600">2014 - 2018</p>
+                            </div>
+                            <p class="text-gray-700 text-sm italic">Academia de Studii Economice, București</p>
+                            <p class="text-gray-700 text-sm">Licență în Marketing</p>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-semibold text-gray-800 border-b border-gray-200 pb-1 mb-2">Competențe</h5>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="font-medium text-gray-700 text-sm">Competențe tehnice:</p>
+                                    <ul class="list-disc list-inside text-gray-700 text-sm ml-2">
+                                        <li>Google Ads, Google Analytics</li>
+                                        <li>SEO, SEM</li>
+                                        <li>Facebook Ads Manager</li>
+                                        <li>HTML, CSS (nivel de bază)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-700 text-sm">Limbi străine:</p>
+                                    <ul class="list-disc list-inside text-gray-700 text-sm ml-2">
+                                        <li>Engleză - Avansat (C1)</li>
+                                        <li>Franceză - Intermediar (B1)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="intrebari" class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 section-title mb-6">Întrebări frecvente</h2>
+                
+                <div class="space-y-4">
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition focus:outline-none" data-target="faq1">
+                            <span class="font-medium text-gray-800">Cât de lung ar trebui să fie CV-ul meu?</span>
+                            <svg class="h-5 w-5 text-gray-500 transform transition-transform faq-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div id="faq1" class="tab-content p-4 bg-gray-50 border-t border-gray-200">
+                            <p class="text-gray-700">
+                                În general, un CV ar trebui să aibă 1-2 pagini. Pentru candidații cu experiență limitată (sub 10 ani), o singură pagină este de obicei suficientă. Profesioniștii cu experiență extinsă pot utiliza două pagini pentru a-și prezenta realizările relevante. Indiferent de lungime, asigură-te că informațiile sunt concise și relevante pentru poziția vizată.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition focus:outline-none" data-target="faq2">
+                            <span class="font-medium text-gray-800">Ar trebui să includ o fotografie în CV?</span>
+                            <svg class="h-5 w-5 text-gray-500 transform transition-transform faq-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div id="faq2" class="tab-content p-4 bg-gray-50 border-t border-gray-200">
+                            <p class="text-gray-700">
+                                Includerea unei fotografii în CV depinde de țară și industrie. În România, este acceptabil să incluzi o fotografie profesională, în special în domenii precum vânzări, relații publice sau ospitalitate. Totuși, în multe țări occidentale (SUA, UK), includerea fotografiilor nu este recomandată pentru a evita potențiale discriminări. Dacă decizi să incluzi o fotografie, aceasta trebuie să fie profesională, cu fundal neutru și ținută business.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition focus:outline-none" data-target="faq3">
+                            <span class="font-medium text-gray-800">Cum să abordez perioadele de inactivitate profesională în CV?</span>
+                            <svg class="h-5 w-5 text-gray-500 transform transition-transform faq-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div id="faq3" class="tab-content p-4 bg-gray-50 border-t border-gray-200">
+                            <p class="text-gray-700">
+                                Perioadele de inactivitate profesională pot fi abordate în mai multe moduri:
+                            </p>
+                            <ul class="list-disc list-inside text-gray-700 mt-2 ml-4">
+                                <li>Dacă ai desfășurat activități relevante în acea perioadă (voluntariat, cursuri, proiecte personale), menționează-le</li>
+                                <li>Pentru perioade scurte, poți folosi doar anii în loc de luni și ani în cronologia experienței</li>
+                                <li>Pentru perioade mai lungi, poți menționa succint motivul (ex: concediu parental, studii, probleme de sănătate) fără a intra în detalii personale excesive</li>
+                                <li>Concentrează-te pe competențele și experiența relevantă, folosind un format funcțional de CV</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition focus:outline-none" data-target="faq4">
+                            <span class="font-medium text-gray-800">Este necesar să includ referințe în CV?</span>
+                            <svg class="h-5 w-5 text-gray-500 transform transition-transform faq-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div id="faq4" class="tab-content p-4 bg-gray-50 border-t border-gray-200">
+                            <p class="text-gray-700">
+                                Nu este necesar să incluzi referințe direct în CV. În loc de a lista numele și datele de contact ale referințelor, poți adăuga o notă simplă la sfârșitul CV-ului: "Referințe disponibile la cerere". Acest lucru economisește spațiu și îți permite să pregătești referințele specifice pentru fiecare poziție. De asemenea, îți oferă posibilitatea de a anunța referințele înainte ca potențialii angajatori să le contacteze.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition focus:outline-none" data-target="faq5">
+                            <span class="font-medium text-gray-800">Cum să evidențiez competențele soft în CV?</span>
+                            <svg class="h-5 w-5 text-gray-500 transform transition-transform faq-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div id="faq5" class="tab-content p-4 bg-gray-50 border-t border-gray-200">
+                            <p class="text-gray-700">
+                                Competențele soft (comunicare, leadership, lucru în echipă) sunt mai eficient demonstrate prin exemple concrete decât prin simpla lor enumerare. În descrierea experienței profesionale, include realizări care ilustrează aceste competențe. De exemplu, în loc să scrii doar "abilități bune de comunicare", menționează: "Am prezentat rapoarte lunare în fața echipei de management, traducând date complexe în informații acționabile care au influențat deciziile strategice".
+                            </p>
+                        </div>
+                    </div>
+                </div>
+           <div style="text-align: center; margin-top: 50px;">
+  <p style="font-size: 18px; color: #333;">
+    Creează un CV profesional în doar câțiva pași. Apasă pe butonul de mai jos pentru a începe simularea!
+  </p>
+
+  <button 
+    onclick="window.open('https://exemplu-site-cv.com', '_blank')" 
+    style="padding: 12px 24px; font-size: 16px; background-color: #007BFF; color: white; border: none; border-radius: 8px; cursor: pointer;">
+    Simulează-ți CV-ul
+  </button>
+          </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="mt-10 pt-6 border-t border-gray-200">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-gray-600 text-sm">&copy; <span id="currentYear"></span> UCeeView. Toate drepturile rezervate.</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Set current date
+        const currentDate = new Date();
+        document.getElementById('currentDate').textContent = currentDate.toLocaleDateString('ro-RO');
+        document.getElementById('currentYear').textContent = currentDate.getFullYear();
+        
+        // Print functionality
+        document.getElementById('printBtn').addEventListener('click', function() {
+            window.print();
+        });
+        
+        // Download as PDF functionality
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            // Alert for demo purposes
+            alert('În implementarea reală, această funcție ar genera un PDF al documentului.');
+            
+            // In a real implementation, you would use a library like html2pdf.js or jsPDF
+            // Example with html2pdf.js would be:
+            // html2pdf().from(document.querySelector('.page')).save('Ghid_CV.pdf');
+        });
+        
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const targetContent = document.getElementById(targetId);
+                
+                // Toggle the current FAQ
+                targetContent.classList.toggle('active');
+                
+                // Toggle arrow rotation
+                const arrow = button.querySelector('.faq-arrow');
+                if (targetContent.classList.contains('active')) {
+                    arrow.classList.add('rotate-180');
+                } else {
+                    arrow.classList.remove('rotate-180');
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95ea60c016f0e44f',t:'MTc1MjQyNjQ2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
